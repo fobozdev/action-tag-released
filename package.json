@@ -1,0 +1,27 @@
+{
+  "name": "action-tag-released",
+  "version": "1.0.0",
+  "description": "GitHub Action that labels pull requests included in a release",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "ncc build src/index.js -o dist",
+    "test": "jest --runInBand"
+  },
+  "keywords": [
+    "github-action",
+    "release",
+    "pull-request",
+    "label"
+  ],
+  "author": "",
+  "license": "MIT",
+  "type": "commonjs",
+  "dependencies": {
+    "@actions/core": "^1.11.1",
+    "@actions/github": "^6.0.1"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4",
+    "jest": "^30.3.0"
+  }
+}

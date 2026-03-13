@@ -1,0 +1,20 @@
+name: Example release labeling
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  label-released-prs:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Label pull requests included in release
+        uses: ./
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          label: release
+          create-label: true

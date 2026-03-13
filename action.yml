@@ -1,0 +1,43 @@
+name: Label Released Pull Requests
+description: Add a label to pull requests included in the published release.
+
+inputs:
+  github-token:
+    description: GitHub token with contents read and pull-requests write permissions.
+    required: true
+  label:
+    description: Label name to add to each included pull request.
+    required: false
+    default: release
+  previous-tag:
+    description: Optional previous release tag to compare against.
+    required: false
+  current-tag:
+    description: Optional current release tag override. Defaults to the release event tag.
+    required: false
+  create-label:
+    description: Create the label if it does not already exist.
+    required: false
+    default: "false"
+  label-color:
+    description: Hex color to use when creating a missing label.
+    required: false
+    default: 0e8a16
+  label-description:
+    description: Description to use when creating a missing label.
+    required: false
+    default: Pull request included in a published release
+
+outputs:
+  current-tag:
+    description: The release tag processed by the action.
+  previous-tag:
+    description: The previous release tag used for comparison.
+  labeled-pr-count:
+    description: Number of pull requests that were labeled.
+  labeled-prs:
+    description: JSON array of labeled pull request numbers.
+
+runs:
+  using: node20
+  main: dist/index.js
