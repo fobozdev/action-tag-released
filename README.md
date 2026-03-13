@@ -9,7 +9,7 @@ It compares the current release tag to the previous published release tag, resol
 | Name | Required | Default | Description |
 | --- | --- | --- | --- |
 | `github-token` | yes | - | Token with `contents: read` and `pull-requests: write` permissions. |
-| `label` | no | `release` | Label to apply to included pull requests. |
+| `label` | no | `released` | Label to apply to included pull requests. |
 | `previous-tag` | no | - | Explicit previous tag to compare against. |
 | `current-tag` | no | release event tag | Explicit current tag override. |
 | `create-label` | no | `false` | Create the label if it does not already exist. |
@@ -43,12 +43,17 @@ jobs:
 
     steps:
       - name: Label pull requests included in the release
-        uses: your-org/action-tag-released@v1
+        uses: fobozdev/action-tag-released@v1
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
-          label: release
+          label: released
           create-label: true
 ```
+
+## Versioning
+
+- Reference a release tag such as `fobozdev/action-tag-released@v1` instead of `@master`.
+- Move the `v1` tag forward as you publish compatible updates, and create full tags such as `v1.0.0` for each release.
 
 ## Notes
 

@@ -123,7 +123,7 @@ async function runAction({ core: actionCore, githubModule, context, clientFactor
   const actionContext = context || github.context;
 
   const token = coreApi.getInput("github-token", { required: true });
-  const label = coreApi.getInput("label") || "release";
+  const label = coreApi.getInput("label") || "released";
   const previousTagInput = coreApi.getInput("previous-tag");
   const currentTagInput = coreApi.getInput("current-tag");
   const createLabel = toBoolean(coreApi.getInput("create-label"));

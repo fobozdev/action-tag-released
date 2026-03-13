@@ -120,7 +120,7 @@ describe("runAction", () => {
   test("creates a missing label and applies it to discovered pull requests", async () => {
     const core = createCore({
       "github-token": "token",
-      label: "release",
+      label: "released",
       "current-tag": "v2.0.0",
       "previous-tag": "v1.0.0",
       "create-label": "true",
@@ -155,7 +155,7 @@ describe("runAction", () => {
     expect(client.rest.issues.createLabel).toHaveBeenCalledWith({
       owner: "acme",
       repo: "widgets",
-      name: "release",
+      name: "released",
       color: "123456",
       description: "Included in release",
     });
@@ -163,7 +163,7 @@ describe("runAction", () => {
       owner: "acme",
       repo: "widgets",
       issue_number: 42,
-      labels: ["release"],
+      labels: ["released"],
     });
     expect(core.outputs["labeled-pr-count"]).toBe("1");
     expect(result.pullRequestNumbers).toEqual([42]);
@@ -172,7 +172,7 @@ describe("runAction", () => {
   test("uses release event tag and skips labeling when no prior release exists", async () => {
     const core = createCore({
       "github-token": "token",
-      label: "release",
+      label: "released",
     });
 
     const client = {
